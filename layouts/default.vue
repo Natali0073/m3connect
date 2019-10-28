@@ -22,7 +22,7 @@ export default {
 </script>
 <style>
   .main-background {
-    background-image: url('../assets/images/adriana-hvar-spa-hotel-40088507-1567514525-ImageGalleryLightboxLarge.jpg') !important;
+    background-image: url('../assets/images/Artboard.png') !important;
     background-size: cover;
   }
 </style>

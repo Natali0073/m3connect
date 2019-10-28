@@ -17,7 +17,7 @@
   .hotel-title {
     width: 182px;
     text-align: center;
-    background: rgba(0, 0, 0, .7);
+    background: rgba(0, 0, 0, .4);
     padding: 5px 20px;
   }
 

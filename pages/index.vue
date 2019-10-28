@@ -3,7 +3,7 @@
     column>
     <v-toolbar flat color="transparent"
                class="main-toolbar">
-      <Logo />
+      <Logo/>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
@@ -24,26 +24,26 @@
         </div>
       </v-toolbar-items>
     </v-toolbar>
-    <div class="d-flex flex-column justify-center align-center">
-      <!--<transition name="fade">-->
-        <!--<p v-if="show">привет</p>-->
-      <!--</transition>-->
-      <div class="greetings-title text-center text-color-light mb-10">Welcome Mr. Smith. Enjoy your stay!</div>
-      <v-btn-toggle
-        tile
-        color="deep-purple accent-3"
-        group
-      >
-        <v-btn v-for="(item) in items">
-          <nuxt-link exact no-prefetch active-class="active" class="nav-link" :to="item.to">
-            <div class="d-flex flex-column justify-center align-center mr-5">
-              <v-icon large>{{item.icon}}</v-icon>
-              <span>{{item.title}}</span>
-            </div>
-          </nuxt-link>
-        </v-btn>
-
-      </v-btn-toggle>
+    <div class="d-flex justify-center align-center main-menu">
+      <div class="d-flex flex-column justify-center align-center">
+        <div class="greetings-title text-center text-color-light mb-10 dancing-font">
+          Welcome Mr. Smith. Enjoy your stay!
+        </div>
+        <v-btn-toggle
+          tile
+          color="deep-purple accent-3"
+          group
+        >
+          <v-btn v-for="(item) in items">
+            <nuxt-link exact no-prefetch active-class="active" class="nav-link" :to="item.to">
+              <div class="d-flex flex-column justify-center align-center mr-5">
+                <v-icon large>{{item.icon}}</v-icon>
+                <span>{{item.title}}</span>
+              </div>
+            </nuxt-link>
+          </v-btn>
+        </v-btn-toggle>
+      </div>
     </div>
   </v-layout>
 </template>
@@ -70,21 +70,21 @@
           {
             icon: 'mdi-chart-bubble',
             title: 'Spa',
-            to: '/spa'
+            to: '/restaurant'
           },
           {
             icon: 'mdi-ticket',
             title: 'Attractions',
-            to: '/attractions'
+            to: '/restaurant'
           },
           {
             icon: 'mdi-sailing',
             title: 'Traveling',
-            to: '/traveling'
+            to: '/restaurant'
           }
         ],
       }
-    }
+    },
   }
 </script>
 
@@ -95,8 +95,11 @@
     color: white;
   }
 
-  .greetings-title {
+  .dancing-font {
     font-family: 'Dancing Script', cursive;
+  }
+
+  .greetings-title {
     font-size: 2em;
   }
 
@@ -117,5 +120,11 @@
   .nav-link {
     color: white !important;
     text-decoration: none;
+  }
+
+  .main-menu {
+    height: 100%;
+    width: 100%;
+    position: absolute;
   }
 </style>
