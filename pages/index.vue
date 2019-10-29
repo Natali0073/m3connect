@@ -27,7 +27,7 @@
     <div class="d-flex justify-center align-center main-menu">
       <div class="d-flex flex-column justify-center align-center">
         <div class="greetings-title text-center text-color-light mb-10 dancing-font">
-          Welcome Mr. Smith. Enjoy your stay! <button @click="createEvent()">Click</button>
+          Welcome Mr. Smith. Enjoy your stay! <v-btn @click="createEvent()">Click</v-btn>
         </div>
         <v-btn-toggle
           group
