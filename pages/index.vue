@@ -27,13 +27,24 @@
     <div class="d-flex justify-center align-center main-menu">
       <div class="d-flex flex-column justify-center align-center">
         <div class="greetings-title text-center text-color-light mb-10 dancing-font">
-          Welcome Mr. Smith. Enjoy your stay! <v-btn @click="createEvent()">Click</v-btn>
+          Welcome Mr. Smith. Enjoy your stay!
         </div>
         <v-btn-toggle
           group
         >
-          <v-btn v-for="(item) in items">
-            <nuxt-link exact no-prefetch active-class="active" class="nav-link" :to="item.to">
+          <v-btn @click="createEvent">
+            <div class="d-flex flex-column justify-center align-center mr-5 text-color-light">
+              <v-icon large>mdi-television</v-icon>
+              <span>TV</span>
+            </div>
+          </v-btn>
+          <v-btn v-for="(item) in items"
+                 :key="item.title">
+            <nuxt-link exact
+                       no-prefetch
+                       active-class="active"
+                       class="nav-link"
+                       :to="item.to">
               <div class="d-flex flex-column justify-center align-center mr-5">
                 <v-icon large>{{item.icon}}</v-icon>
                 <span>{{item.title}}</span>
@@ -55,11 +66,6 @@
     data () {
       return {
         items: [
-          {
-            icon: 'mdi-television',
-            title: 'TV',
-            to: '/tv'
-          },
           {
             icon: 'mdi-silverware',
             title: 'Restaurant',
@@ -84,7 +90,7 @@
       }
     },
     methods: {
-      createEvent: function() {
+      createEvent: function (e) {
 
         hcap.power.getPowerMode({
           "onSuccess" : function(s) {
@@ -110,6 +116,7 @@
             console.log("onFailure : errorMessage = " + f.errorMessage);
           }
         });
+
 //        console.log('click');
 //        var event = new Event('build');
 //        document.body.className = 'custom-class';
@@ -140,7 +147,6 @@
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 
   .text-color-light {
     color: white;
