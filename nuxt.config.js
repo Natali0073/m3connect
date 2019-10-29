@@ -15,7 +15,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
   },
   /*
   ** Customize the progress-bar color
@@ -67,6 +67,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
+    vendor: ['~/assets/hcap/hcap.js'],
     extend (config, ctx) {
     }
   }
