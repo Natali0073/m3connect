@@ -27,10 +27,9 @@
     <div class="d-flex justify-center align-center main-menu">
       <div class="d-flex flex-column justify-center align-center">
         <div class="greetings-title text-center text-color-light mb-10 dancing-font">
-          Welcome Mr. Smith. Enjoy your stay!
+          Welcome Mr. Smith. Enjoy your stay! <button @click="createEvent()">Click</button>
         </div>
         <v-btn-toggle
-          tile
           group
         >
           <v-btn v-for="(item) in items">
@@ -84,6 +83,32 @@
         ],
       }
     },
+    methods: {
+      createEvent: function() {
+        console.log('click');
+        var event = new Event('build');
+//        setTimeout(this.sayHi(), 1000);
+//        var scope = this;
+//        document.addEventListener('build', function (e) {
+//          console.log('build event');
+//          setTimeout(scope.sayHi(), 1000);
+//        }, false);
+        document.dispatchEvent(event);
+      },
+
+      sayHi() {
+        console.log('sayHi');
+        console.log(document);
+        var div = document.createElement('div');
+        div.innerText = 'TEST DIV';
+        div.style.color = 'white';
+        div.style.position = 'absolute';
+        div.style.background = 'red';
+        div.style.bottom = '100px';
+        div.style.top = '0';
+        document.body.appendChild(div);
+      }
+    }
   }
 </script>
 
