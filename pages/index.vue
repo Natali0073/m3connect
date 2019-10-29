@@ -87,6 +87,7 @@
       createEvent: function() {
         console.log('click');
         var event = new Event('build');
+        document.body.className = 'custom-class';
 //        setTimeout(this.sayHi(), 1000);
 //        var scope = this;
 //        document.addEventListener('build', function (e) {
