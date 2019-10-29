@@ -13,13 +13,13 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/images/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Dancing+Script&display=swap' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Courgette&display=swap' },
     ],
     script: [
       {
-        src: './hcap/js/hcap.js'
+        src: '/scripts/hcap.js'
       }
     ]
   },
@@ -73,7 +73,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    vendor: ['~/assets/hcap/js/hcap.js'],
+    vendor: ['/scripts/hcap.js'],
     extend (config, ctx) {
     }
   }
