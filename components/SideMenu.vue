@@ -5,16 +5,16 @@
               color="white">mdi-silverware
       </v-icon>
     </div>
-    <div class="courgette-font mb-5 font-20">
+    <h1 class="courgette-font mb-5 font-weight-light">
       {{title}}
-    </div>
+    </h1>
     <v-list class="w-100">
       <v-list-item-group v-model="model"
                          active-class="active-item">
         <v-list-item
           v-for="(item, i) in menuList"
           :key="i"
-          @click="changeSelection(item.value)"
+          @click="changeSelection(i)"
         >
           <v-list-item-content>
             <v-list-item-title v-text="item.title"></v-list-item-title>
@@ -29,7 +29,7 @@
   export default {
     props: {
       menuList: Array,
-      title: String
+      title: String,
     },
     data() {
       return {
@@ -38,6 +38,7 @@
     },
     methods: {
       changeSelection(value) {
+        console.log('value')
         this.$emit('selectMenu', value)
       }
     }
