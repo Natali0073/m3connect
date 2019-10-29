@@ -31,7 +31,6 @@
         </div>
         <v-btn-toggle
           tile
-          color="deep-purple accent-3"
           group
         >
           <v-btn v-for="(item) in items">
