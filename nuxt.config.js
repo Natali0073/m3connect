@@ -19,7 +19,7 @@ export default {
     ],
     script: [
       {
-        src: '/scripts/hcap.js'
+        src: '/scripts/hcap/js/hcap.js'
       }
     ]
   },
@@ -73,7 +73,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    vendor: ['/scripts/hcap.js'],
+    vendor: ['/scripts/hcap/js/hcap.js'],
     extend (config, ctx) {
     }
   }
