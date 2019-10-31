@@ -28,7 +28,7 @@
       </div>
       <div class="d-flex flex-column align-center px-5">
         <span class="mb-2 text-center">Call our reception to reserve a table</span>
-        <span class="bold-text">+385 21 75 200</span>
+        <span class="bold-text">{{data.phoneNumber}}</span>
       </div>
       <div class="d-flex flex-column justify-center">
         <div class="courgette-font font-weight-light my-1 system-gold-text text-18">or</div>
@@ -36,7 +36,7 @@
       </div>
       <div class="d-flex flex-column align-center px-5">
         <span class="mb-2 text-center">Visit our website to make a booking</span>
-        <span class="bold-text">www.suncanihvar.com</span>
+        <span class="bold-text">{{data.website}}</span>
       </div>
     </div>
   </div>

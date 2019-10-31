@@ -38,64 +38,20 @@
         pageTitle: 'Gourmet',
         menuIndex: 'breakfast',
         pageInfo: {},
-        menuList: [
-          {
-            title: 'Breakfast',
-            value: 'breakfast',
-          },
-          {
-            title: 'Lunch',
-            value: 'lunch',
-          },
-          {
-            title: 'Dinner',
-            value: 'dinner',
-          },
-          {
-            title: 'Bar',
-            value: 'bar',
-          }
-        ],
-        restaurantsList: [
-          {
-            title: 'Breakfast',
-            restaurantInfo: {
-              name: 'Val Marina Restaurant',
-              imageName: 'breakfast.png',
-              workingHours: '10:00 a.m - 11:30 p.m'
-            }
-          },
-          {
-            title: 'Lunch',
-            restaurantInfo: {
-              name: 'Top Bar Restaurant',
-              imageName: 'restaurant.png',
-              workingHours: '14:00 p.m - 17:00 p.m'
-            }
-          },
-          {
-            title: 'Dinner',
-            restaurantInfo: {
-              name: 'Sensori Spa Restaurant',
-              imageName: 'dinner.png',
-              workingHours: '14:00 p.m - 17:00 p.m'
-            }
-          },
-          {
-            title: 'Bar',
-            restaurantInfo: {
-              name: 'Lobby Bar',
-              imageName: 'bar.png',
-              workingHours: '12:00 a.m - 22:00 p.m'
-            }
-          },
-        ]
+      }
+    },
+    async fetch({store}) {
+      if (store.getters.restaurantMenu.length === 0) {
+        await store.dispatch('fetchRestaurantMenuList')
       }
     },
     computed: {
       restaurantInfo() {
         return this.$store.state.cmsData;
       },
+      menuList() {
+        return this.$store.getters.restaurantMenu
+      }
     },
     methods: {
       changeView (value) {

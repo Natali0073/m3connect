@@ -66,7 +66,6 @@
   export default {
     beforeCreate() {
       this.isLoading = true;
-      console.log('beforeCreate');
     },
     created() {
       const scope = this;
@@ -109,10 +108,8 @@
       }
     },
     async fetch({store}) {
-      console.log(store.getters['homeInfo']);
-      console.log(store.getters.homeInfo);
-      if (store.getters['homeInfo'].length === 0) {
-        await store.dispatch('fetch')
+      if (!store.getters.homeInfo) {
+        await store.dispatch('fetchHomeInfo')
       }
     },
     computed: {
