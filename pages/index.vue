@@ -18,11 +18,11 @@
           </div>
           <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
             <v-icon color="white">mdi-calendar</v-icon>
-            <span>SA</span>
+            <span>{{day}}</span>
           </div>
           <div class="d-flex flex-column font-07 justify-center align-center text-color-light">
             <v-icon color="white">mdi-clock-outline</v-icon>
-            <span>14:20</span>
+            <span>{{time}}</span>
           </div>
         </v-toolbar-items>
       </v-toolbar>
@@ -69,8 +69,11 @@
       console.log('beforeCreate');
     },
     created() {
-      console.log('created');
+      const scope = this;
       this.isLoading = false;
+      setInterval(() => {
+        scope.time = scope.$moment().format('HH:mm');
+      }, 60000);
     },
     components: {
       Logo,
@@ -101,6 +104,8 @@
             to: '/restaurant'
           }
         ],
+        time: this.$moment().format('HH:mm'),
+        day: this.$moment().format('ddd')
       }
     },
     async fetch({store}) {
@@ -114,7 +119,7 @@
       }
     },
     methods: {
-      tvClick: function (e) {
+      tvClick: () => {
 
       },
     }
