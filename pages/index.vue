@@ -109,13 +109,15 @@
       }
     },
     async fetch({store}) {
+      console.log(store.getters['homeInfo']);
+      console.log(store.getters.homeInfo);
       if (store.getters['homeInfo'].length === 0) {
         await store.dispatch('fetch')
       }
     },
     computed: {
       homeInfo() {
-        return this.$store.getters['homeInfo']
+        return this.$store.getters.homeInfo
       }
     },
     methods: {

@@ -19,6 +19,9 @@ export default {
     ],
     script: [
       {
+        src: 'https://identity.netlify.com/v1/netlify-identity-widget.js'
+      },
+      {
         // src: '/scripts/hcap.js'
       }
     ]
