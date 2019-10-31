@@ -10,11 +10,11 @@
         <v-toolbar-items>
           <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
             <v-icon color="white">mdi-web</v-icon>
-            <span>EN</span>
+            <span>{{homeInfo.lang}}</span>
           </div>
           <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
             <v-icon color="white">mdi-weather-sunny</v-icon>
-            <span>23 C</span>
+            <span>{{homeInfo.weather}} &#8451;</span>
           </div>
           <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
             <v-icon color="white">mdi-calendar</v-icon>
@@ -29,7 +29,7 @@
       <div class="d-flex justify-center align-center main-menu">
         <div class="d-flex flex-column justify-center align-center">
           <div class="greetings-title text-center text-color-light mb-10 dancing-font">
-            Welcome Mr. Smith. Enjoy your stay!
+            Welcome {{homeInfo.name}}. Enjoy your stay!
           </div>
           <v-btn-toggle
             group
@@ -101,6 +101,16 @@
             to: '/restaurant'
           }
         ],
+      }
+    },
+    async fetch({store}) {
+      if (store.getters['homeInfo'].length === 0) {
+        await store.dispatch('fetch')
+      }
+    },
+    computed: {
+      homeInfo() {
+        return this.$store.getters['homeInfo']
       }
     },
     methods: {
