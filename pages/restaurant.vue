@@ -8,7 +8,8 @@
       <BackButton/>
     </div>
     <div class="main-bar pa-12">
-      <RestaurantsInfo :data="restaurantsList[menuIndex]"/>
+      <RestaurantsInfo v-if="pageInfo" :data="pageInfo"/>
+      <div v-else>No data</div>
     </div>
   </div>
 </template>
@@ -26,10 +27,17 @@
       BackButton,
       RestaurantsInfo
     },
+    beforeCreate() {
+
+    },
+    created() {
+      this.getInfo(this.menuIndex);
+    },
     data () {
       return {
         pageTitle: 'Gourmet',
-        menuIndex: 0,
+        menuIndex: 'breakfast',
+        pageInfo: {},
         menuList: [
           {
             title: 'Breakfast',
@@ -84,9 +92,18 @@
         ]
       }
     },
+    computed: {
+      restaurantInfo() {
+        return this.$store.state.cmsData;
+      },
+    },
     methods: {
       changeView (value) {
-        this.menuIndex = value;
+        this.getInfo(value);
+      },
+      getInfo(value) {
+        const info = this.restaurantInfo.filter(el => el.title.toLowerCase() === value);
+        this.pageInfo = info[0];
       }
     }
   }
@@ -109,28 +126,4 @@
     width: 70%;
     background: black;
   }
-
-  /*.courgette-font {*/
-    /*font-family: 'Courgette', cursive;*/
-  /*}*/
-
-  /*.text-14 {*/
-     /*font-size: 14px;*/
-   /*}*/
-
-  /*.text-18 {*/
-    /*font-size: 18px;*/
-  /*}*/
-
-  /*.system-gold-text {*/
-    /*color: #846b42;*/
-  /*}*/
-
-  /*.bold-text {*/
-    /*font-weight: bold;*/
-  /*}*/
-
-  /*.theme--light.v-divider {*/
-    /*border-color: #846b42;*/
-  /*}*/
 </style>

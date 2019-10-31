@@ -12,9 +12,9 @@
       <v-list-item-group v-model="model"
                          active-class="active-item">
         <v-list-item
-          v-for="(item, i) in menuList"
-          :key="i"
-          @click="changeSelection(i)"
+          v-for="item in menuList"
+          :key="item.value"
+          @click="changeSelection(item.value)"
         >
           <v-list-item-content>
             <v-list-item-title v-text="item.title"></v-list-item-title>
@@ -38,7 +38,6 @@
     },
     methods: {
       changeSelection(value) {
-        console.log('value')
         this.$emit('selectMenu', value)
       }
     }

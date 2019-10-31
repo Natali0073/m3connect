@@ -4,22 +4,13 @@
       {{data.title}}
     </h1>
     <div class="d-flex">
-      <img :src="require(`@/assets/images/${data.restaurantInfo.imageName}`)" alt="restaurant" width="40%"/>
+      <img :src="require(`@/static${data.image}`)" alt="restaurant" width="40%"/>
       <div class="d-flex flex-column ml-12">
-        <h2 class="courgette-font font-weight-light">{{data.restaurantInfo.name}}</h2>
+        <h2 class="courgette-font font-weight-light">{{data.restaurant}}</h2>
         <div class="my-5 text-14">
-          Cuisine: American, British, French, Mediterranean, Seafood, Steakhouse, Local, Asian, International,
-          European, Croatian, Grill/BBQ
+          {{data.cuisine}}
         </div>
-        <div>
-          Opening hours:
-        </div>
-        <div>
-          Daily rom Monday to Sunday
-        </div>
-        <div>
-          {{data.restaurantInfo.workingHours}}
-        </div>
+        <div v-html="$md.render(data.additionalInfo)" />
         <v-divider class="mt-5"></v-divider>
       </div>
     </div>
@@ -53,20 +44,13 @@
 
 <script>
   export default {
-    name: 'RestaurantsInfo',
     props: {
       data: Object,
     },
-    data() {
-      return {
-
-      }
-    }
   }
 </script>
 
 <style scoped>
-
   .courgette-font {
     font-family: 'Courgette', cursive;
   }
