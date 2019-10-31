@@ -3,7 +3,7 @@
   "restaurant": "Val Marina Restaurant",
   "phoneNumber": "+385 21 75 200",
   "website": "www.suncanihvar.com",
-  "Cuisine": "Cuisine: American, British, French, Mediterranean, Seafood, Steakhouse, Local, Asian, International, European, Croatian, Grill/BBQ",
+  "cuisine": "Cuisine: American, British, French, Mediterranean, Seafood, Steakhouse, Local, Asian, International, European, Croatian, Grill/BBQ",
   "additionalInfo": "Opening hours:\n\nDaily rom Monday to Sunday\n\n10:00 a.m - 11:30 p.m",
   "image": "/img/f792f44.png"
 }
