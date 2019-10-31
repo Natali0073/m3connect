@@ -19,6 +19,6 @@ collections:
       - { label: 'Restaurant name', name: 'restaurant', widget: 'string' }
       - { label: 'Phone number', name: 'phoneNumber', widget: 'string' }
       - { label: 'Website', name: 'website', widget: 'string' }
-      - { label: 'Cuisine', name: 'Cuisine', widget: 'markdown' }
+      - { label: 'Cuisine', name: 'cuisine', widget: 'markdown' }
       - { label: 'Additional info', name: 'additionalInfo', widget: 'markdown' }
       - { label: 'Image', name: 'image', widget: 'image', required: false, media_library: { config: {multiple: false } } }
