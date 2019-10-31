@@ -73,7 +73,7 @@
       this.isLoading = false;
       setInterval(() => {
         scope.time = scope.$moment().format('HH:mm');
-      }, 60000);
+      }, 30000);
     },
     components: {
       Logo,
