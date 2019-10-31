@@ -19,7 +19,7 @@ export default {
     ],
     script: [
       {
-        src: '/scripts/hcap.js'
+        // src: '/scripts/hcap.js'
       }
     ]
   },

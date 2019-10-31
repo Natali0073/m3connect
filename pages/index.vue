@@ -32,7 +32,7 @@
         <v-btn-toggle
           group
         >
-          <v-btn @click="createEvent">
+          <v-btn @click="tvClick">
             <div class="d-flex flex-column justify-center align-center mr-5 text-color-light">
               <v-icon large>mdi-television</v-icon>
               <span>TV</span>
@@ -90,58 +90,9 @@
       }
     },
     methods: {
-      createEvent: function (e) {
+      tvClick: function (e) {
 
-        hcap.power.getPowerMode({
-          "onSuccess" : function(s) {
-            var div = document.createElement('div');
-            div.innerText = 'TEST DIV';
-            div.style.color = 'white';
-            div.style.position = 'absolute';
-            div.style.background = 'red';
-            div.style.bottom = '100px';
-            div.style.top = '0';
-            document.body.appendChild(div);
-            console.log("onSuccess power mode " + s.mode);
-          },
-          "onFailure" : function(f) {
-            var div = document.createElement('div');
-            div.innerText = 'TEST DIV';
-            div.style.color = 'white';
-            div.style.position = 'absolute';
-            div.style.background = 'blue';
-            div.style.bottom = '100px';
-            div.style.top = '0';
-            document.body.appendChild(div);
-            console.log("onFailure : errorMessage = " + f.errorMessage);
-          }
-        });
-
-//        console.log('click');
-//        var event = new Event('build');
-//        document.body.className = 'custom-class';
-//        document.body.className = 'test-class';
-////        setTimeout(this.sayHi(), 1000);
-////        var scope = this;
-////        document.addEventListener('build', function (e) {
-////          console.log('build event');
-////          setTimeout(scope.sayHi(), 1000);
-////        }, false);
-//        document.dispatchEvent(event);
       },
-
-      sayHi() {
-        console.log('sayHi');
-        console.log(document);
-        var div = document.createElement('div');
-        div.innerText = 'TEST DIV';
-        div.style.color = 'white';
-        div.style.position = 'absolute';
-        div.style.background = 'red';
-        div.style.bottom = '100px';
-        div.style.top = '0';
-        document.body.appendChild(div);
-      }
     }
   }
 </script>
