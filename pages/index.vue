@@ -1,70 +1,84 @@
 <template>
-  <v-layout
-    column>
-    <v-toolbar flat color="transparent"
-               class="main-toolbar">
-      <Logo/>
-      <v-spacer></v-spacer>
-      <v-toolbar-items>
-        <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
-          <v-icon color="white">mdi-web</v-icon>
-          <span>EN</span>
-        </div>
-        <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
-          <v-icon color="white">mdi-weather-sunny</v-icon>
-          <span>23 C</span>
-        </div>
-        <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
-          <v-icon color="white">mdi-calendar</v-icon>
-          <span>SA</span>
-        </div>
-        <div class="d-flex flex-column font-07 justify-center align-center text-color-light">
-          <v-icon color="white">mdi-clock-outline</v-icon>
-          <span>14:20</span>
-        </div>
-      </v-toolbar-items>
-    </v-toolbar>
-    <div class="d-flex justify-center align-center main-menu">
-      <div class="d-flex flex-column justify-center align-center">
-        <div class="greetings-title text-center text-color-light mb-10 dancing-font">
-          Welcome Mr. Smith. Enjoy your stay!
-        </div>
-        <v-btn-toggle
-          group
-        >
-          <v-btn @click="tvClick">
-            <div class="d-flex flex-column justify-center align-center mr-5 text-color-light">
-              <v-icon large>mdi-television</v-icon>
-              <span>TV</span>
-            </div>
-          </v-btn>
-          <v-btn v-for="(item) in items"
-                 :key="item.title">
-            <nuxt-link exact
-                       no-prefetch
-                       active-class="active"
-                       class="nav-link"
-                       :to="item.to">
-              <div class="d-flex flex-column justify-center align-center mr-5">
-                <v-icon large>{{item.icon}}</v-icon>
-                <span>{{item.title}}</span>
+  <div class="h-100 w-100">
+    <Loading v-if="isLoading"/>
+    <v-layout v-else
+              column>
+      <v-toolbar flat color="transparent"
+                 class="main-toolbar">
+        <Logo/>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+          <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
+            <v-icon color="white">mdi-web</v-icon>
+            <span>EN</span>
+          </div>
+          <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
+            <v-icon color="white">mdi-weather-sunny</v-icon>
+            <span>23 C</span>
+          </div>
+          <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
+            <v-icon color="white">mdi-calendar</v-icon>
+            <span>SA</span>
+          </div>
+          <div class="d-flex flex-column font-07 justify-center align-center text-color-light">
+            <v-icon color="white">mdi-clock-outline</v-icon>
+            <span>14:20</span>
+          </div>
+        </v-toolbar-items>
+      </v-toolbar>
+      <div class="d-flex justify-center align-center main-menu">
+        <div class="d-flex flex-column justify-center align-center">
+          <div class="greetings-title text-center text-color-light mb-10 dancing-font">
+            Welcome Mr. Smith. Enjoy your stay!
+          </div>
+          <v-btn-toggle
+            group
+          >
+            <v-btn @click="tvClick">
+              <div class="d-flex flex-column justify-center align-center mr-5 text-color-light">
+                <v-icon large>mdi-television</v-icon>
+                <span>TV</span>
               </div>
-            </nuxt-link>
-          </v-btn>
-        </v-btn-toggle>
+            </v-btn>
+            <v-btn v-for="(item) in items"
+                   :key="item.title">
+              <nuxt-link exact
+                         no-prefetch
+                         active-class="active"
+                         class="nav-link"
+                         :to="item.to">
+                <div class="d-flex flex-column justify-center align-center mr-5">
+                  <v-icon large>{{item.icon}}</v-icon>
+                  <span>{{item.title}}</span>
+                </div>
+              </nuxt-link>
+            </v-btn>
+          </v-btn-toggle>
+        </div>
       </div>
-    </div>
-  </v-layout>
+    </v-layout>
+  </div>
 </template>
 
 <script>
   import Logo from '@/components/Logo';
+  import Loading from '@/components/Loading';
   export default {
+    beforeCreate() {
+      this.isLoading = true;
+      console.log('beforeCreate');
+    },
+    created() {
+      console.log('created');
+      this.isLoading = false;
+    },
     components: {
-      Logo
+      Logo,
+      Loading
     },
     data () {
       return {
+        isLoading: true,
         items: [
           {
             icon: 'mdi-silverware',
@@ -134,5 +148,13 @@
     height: 100%;
     width: 100%;
     position: absolute;
+  }
+
+  .h-100 {
+    height: 100%;
+  }
+
+  .w-100 {
+    width: 100%;
   }
 </style>
