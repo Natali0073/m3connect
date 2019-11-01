@@ -31,6 +31,7 @@
 
     },
     created() {
+      console.log('created');
       this.getInfo(this.menuIndex);
     },
     data () {
@@ -44,13 +45,15 @@
       if (store.getters.restaurantMenu.length === 0) {
         await store.dispatch('fetchRestaurantMenuList')
       }
+
+      await store.dispatch('fetchRestaurantsInfo')
     },
     computed: {
-      restaurantInfo() {
-        return this.$store.state.cmsData;
-      },
       menuList() {
         return this.$store.getters.restaurantMenu
+      },
+      restaurantsInfo() {
+        return this.$store.getters.restaurantsInfo
       }
     },
     methods: {
@@ -58,7 +61,7 @@
         this.getInfo(value);
       },
       getInfo(value) {
-        const info = this.restaurantInfo.filter(el => el.title.toLowerCase() === value);
+        const info = this.restaurantsInfo.filter(el => el.title.toLowerCase() === value);
         this.pageInfo = info[0];
       }
     }
