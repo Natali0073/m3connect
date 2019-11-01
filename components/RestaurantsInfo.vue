@@ -4,7 +4,7 @@
       {{data.title}}
     </h1>
     <div class="d-flex">
-      <img :src="require(`@/static${data.image}`)" alt="restaurant" width="40%"/>
+      <img :src="require(`@/static${data.image}`)" alt="restaurant" width="40%" height="100%"/>
       <div class="d-flex flex-column ml-12">
         <h2 class="courgette-font font-weight-light">{{data.restaurant}}</h2>
         <div class="my-5 text-14">
