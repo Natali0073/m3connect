@@ -1,7 +1,7 @@
 export const state = () => ({
   homeInfo: null,
   restaurantMenu: [],
-  restaurantsInfo: [],
+  cmsData: [],
 });
 
 export const mutations = {
@@ -11,8 +11,8 @@ export const mutations = {
   setRestaurantMenu(state, restaurantMenu) {
     state.restaurantMenu = restaurantMenu
   },
-  setRestaurantsInfo(state, restaurantsInfo) {
-    state.restaurantsInfo = restaurantsInfo
+  setCmsData(state, list) {
+    state.cmsData = list;
   },
 };
 
@@ -25,14 +25,18 @@ export const actions = {
     const restaurantMenu = await this.$axios.$get('https://my-json-server.typicode.com/Natali0073/m3connect-test-data/menuList');
     commit('setRestaurantMenu', restaurantMenu)
   },
-  async fetchRestaurantsInfo({commit}) {
-    const restaurantsInfo = await this.$axios.$get('https://my-json-server.typicode.com/Natali0073/m3connect-test-data/restaurantsInfo');
-    commit('setRestaurantsInfo', restaurantsInfo)
-  }
+  async nuxtServerInit({ commit }) {
+    let files = await require.context('~/assets/content/data/', false, /\.json$/);
+    let data = files.keys().map(key => {
+      let res = files(key);
+      res.slug = key.slice(2, -5);
+      return res;
+    });
+    await commit('setCmsData', data);
+  },
 };
 
 export const getters = {
   homeInfo: s => s.homeInfo,
-  restaurantMenu: s => s.restaurantMenu,
-  restaurantsInfo: s => s.restaurantsInfo
+  restaurantMenu: s => s.restaurantMenu
 };

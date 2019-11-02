@@ -24,6 +24,11 @@ export default {
       { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }
     ]
   },
+
+  // server: {
+  //   port: 3000,
+  //   host: '0.0.0.0'
+  // },
   /*
   ** Customize the progress-bar color
   */
