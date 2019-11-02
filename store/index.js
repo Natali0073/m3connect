@@ -2,6 +2,7 @@ export const state = () => ({
   homeInfo: null,
   restaurantMenu: [],
   cmsData: [],
+  weather: null,
 });
 
 export const mutations = {
@@ -13,6 +14,9 @@ export const mutations = {
   },
   setCmsData(state, list) {
     state.cmsData = list;
+  },
+  setWeather(state, list) {
+    state.weather = list;
   },
 };
 
@@ -34,9 +38,16 @@ export const actions = {
     });
     await commit('setCmsData', data);
   },
+  async fetchWeather({commit}) {
+    const apiKey = '370ea4e0741c93ac23290a1e7c524975';
+    const city = 'Lviv';
+    const weather = await this.$axios.$get(`hhttp://api.weatherstack.com/current?access_key=${apiKey}&query=${city}`);
+    commit('setWeather', weather)
+  },
 };
 
 export const getters = {
   homeInfo: s => s.homeInfo,
-  restaurantMenu: s => s.restaurantMenu
+  restaurantMenu: s => s.restaurantMenu,
+  weather: s => s.weather
 };

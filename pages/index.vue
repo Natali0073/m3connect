@@ -14,7 +14,7 @@
           </div>
           <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
             <v-icon color="white">mdi-weather-sunny</v-icon>
-            <span>{{homeInfo.weather}} &#8451;</span>
+            <span>{{weather.current.temperature}} &#8451;</span>
           </div>
           <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
             <v-icon color="white">mdi-calendar</v-icon>
@@ -111,10 +111,18 @@
       if (!store.getters.homeInfo) {
         await store.dispatch('fetchHomeInfo')
       }
+
+      if (!store.getters.weather) {
+        await store.dispatch('fetchWeather')
+      }
     },
     computed: {
       homeInfo() {
         return this.$store.getters.homeInfo
+      },
+
+      weather() {
+        return this.$store.getters.weather
       }
     },
     methods: {
