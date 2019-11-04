@@ -10,24 +10,22 @@
 </template>
 
 <style>
-  .text-color-light {
-    color: white;
-  }
+.text-color-light {
+  color: white;
+}
 
-  .hotel-title {
-    width: 182px;
-    text-align: center;
-    background: rgba(0, 0, 0, .4);
-    padding: 5px 20px;
-  }
+.hotel-title {
+  width: 182px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 5px 20px;
+}
 
-  .hotel-name {
-    font-size: 3em;
-  }
+.hotel-name {
+  font-size: 3em;
+}
 
-  .font-07 {
-    font-size: 0.7em;
-  }
+.font-07 {
+  font-size: 0.7em;
+}
 </style>
-
-

@@ -1,14 +1,14 @@
 <template>
   <v-app class="main-background">
     <v-content>
-        <nuxt />
+      <nuxt />
     </v-content>
   </v-app>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       clipped: false,
       drawer: false,
@@ -16,13 +16,13 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-    }
-  }
-}
+    };
+  },
+};
 </script>
 <style>
-  .main-background {
-    background-image: url('../assets/images/Artboard.png') !important;
-    background-size: cover;
-  }
+.main-background {
+  background-image: url('../assets/images/Artboard.png') !important;
+  background-size: cover;
+}
 </style>
