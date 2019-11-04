@@ -36,7 +36,7 @@
     data () {
       return {
         pageTitle: 'Gourmet',
-        menuIndex: 'breakfast',
+        menuIndex: '1',
         pageInfo: {},
       }
     },
@@ -58,7 +58,7 @@
         this.getInfo(value);
       },
       getInfo(value) {
-        const info = this.restaurantInfo.filter(el => el.title.toLowerCase() === value);
+        const info = this.restaurantInfo.filter(el => el.id === +value);
         this.pageInfo = info[0];
       }
     }
