@@ -1,6 +1,6 @@
 <template>
   <div class="h-100 w-100">
-    <Loading v-if="isLoading" />
+    <Loading v-if="isLoading"/>
     <v-layout
       v-else
       column>
@@ -8,7 +8,7 @@
         flat
         color="transparent"
         class="main-toolbar">
-        <Logo />
+        <Logo/>
         <v-spacer/>
         <v-toolbar-items>
           <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
@@ -33,7 +33,8 @@
         <div class="d-flex flex-column justify-center align-center">
           <div
             class="greetings-title text-center text-color-light mb-10 dancing-font"
-          >Welcome {{ homeInfo.name }}. Enjoy your stay!</div>
+          >Welcome {{ homeInfo.name }}. Enjoy your stay!
+          </div>
           <v-btn-toggle group>
             <v-btn @click="tvClick">
               <div class="d-flex flex-column justify-center align-center mr-5 text-color-light">
@@ -129,7 +130,23 @@ export default {
     }
   },
   methods: {
-    tvClick: () => {},
+    tvClick() {
+      console.log(1);
+      var request = webOS.service.request('luna://com.webos.audio', {
+        method: 'setMuted',
+        parameters: { muted: true },
+        onSuccess: function(inResponse) {
+          console.log('TV is muted');
+          // To-Do something
+        },
+        onFailure: function(inError) {
+          console.log('Failed to set muted');
+          console.log('[' + inError.errorCode + ']: ' + inError.errorText);
+          // To-Do something
+          return;
+        },
+      });
+    },
   },
 };
 </script>

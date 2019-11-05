@@ -28,14 +28,16 @@ export default {
       },
     ],
     script: [
-      //
+      {
+        src: 'scripts/webOSTV.js'
+      }
     ],
   },
 
-  // server: {
-  //   port: 3000,
-  //   host: '0.0.0.0'
-  // },
+  server: {
+    port: 3000,
+    host: '0.0.0.0'
+  },
   /*
   ** Customize the progress-bar color
   */
@@ -90,7 +92,7 @@ export default {
     ** You can extend webpack config here
     */
     extractCSS: true,
-    vendor: ['/scripts/hcap.js', 'scripts/webOSTV.js'],
+    vendor: ['/scripts/hcap.js',],
     extend(
       config,
       {
@@ -106,6 +108,9 @@ export default {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/,
+          options : {
+            fix : true
+          }
         });
         // lazysizes
         vue.transformAssetUrls.img = ['data-src', 'src'];
