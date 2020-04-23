@@ -92,7 +92,7 @@ export default {
           to: '/restaurant',
         },
         {
-          icon: 'mdi-sailing',
+          icon: 'mdi-terrain',
           title: 'Traveling',
           to: '/restaurant',
         },
