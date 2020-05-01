@@ -67,6 +67,8 @@
 <script>
 import Logo from '@/components/Logo';
 import Loading from '@/components/Loading';
+const firebase = require('../firebaseConfig.js');
+
 export default {
   components: {
     Logo,
@@ -128,6 +130,17 @@ export default {
     if (!store.getters.weather) {
       await store.dispatch('fetchWeather');
     }
+  },
+  mounted() {
+    firebase.db
+      .collection('user')
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          console.log(doc.id);
+          console.log(doc.data());
+        });
+      });
   },
   methods: {
     tvClick() {
