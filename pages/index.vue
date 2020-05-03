@@ -12,10 +12,6 @@
         <v-spacer/>
         <v-toolbar-items>
           <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
-            <v-icon color="white">mdi-web</v-icon>
-            <span>{{ homeInfo.lang }}</span>
-          </div>
-          <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
             <v-icon color="white">mdi-weather-sunny</v-icon>
             <span>{{ weather.current.temperature }} &#8451;</span>
           </div>
@@ -33,15 +29,9 @@
         <div class="d-flex flex-column justify-center align-center">
           <div
             class="greetings-title text-center text-color-light mb-10 dancing-font"
-          >Welcome {{ homeInfo.name }}. Enjoy your stay!
+          >Welcome {{ homeInfo.gender === 'male' ? 'Mr.' : 'Mrs.' }} {{ homeInfo.userLastName }}. Enjoy your stay!
           </div>
           <v-btn-toggle group>
-            <v-btn @click="tvClick">
-              <div class="d-flex flex-column justify-center align-center mr-5 text-color-light">
-                <v-icon large>mdi-television</v-icon>
-                <span>TV</span>
-              </div>
-            </v-btn>
             <v-btn
               v-for="(item) in items"
               :key="item.title">
@@ -123,10 +113,6 @@ export default {
     }, 30000);
   },
   async fetch({ store }) {
-    if (!store.getters.homeInfo) {
-      await store.dispatch('fetchHomeInfo');
-    }
-
     if (!store.getters.weather) {
       await store.dispatch('fetchWeather');
     }
@@ -137,8 +123,7 @@ export default {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          console.log(doc.id);
-          console.log(doc.data());
+          this.$store.commit('setHomeInfo', doc.data());
         });
       });
   },

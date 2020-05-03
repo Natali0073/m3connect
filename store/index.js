@@ -1,3 +1,5 @@
+const firebase = require('../firebaseConfig.js');
+
 export const state = () => ({
   homeInfo: null,
   restaurantMenu: [],
@@ -21,12 +23,6 @@ export const mutations = {
 };
 
 export const actions = {
-  async fetchHomeInfo({ commit }) {
-    const homeInfo = await this.$axios.$get(
-      'https://my-json-server.typicode.com/Natali0073/m3connect-test-data/profile'
-    );
-    commit('setHomeInfo', homeInfo);
-  },
   async fetchRestaurantMenuList({ commit }) {
     const restaurantMenu = await this.$axios.$get(
       'https://my-json-server.typicode.com/Natali0073/m3connect-test-data/menuList'
