@@ -76,7 +76,7 @@ export default {
         {
           icon: 'mdi-chart-bubble',
           title: 'Spa',
-          to: '/restaurant',
+          to: '/spa',
         },
         {
           icon: 'mdi-ticket',
@@ -107,7 +107,6 @@ export default {
   },
   created() {
     const scope = this;
-    this.isLoading = false;
     setInterval(() => {
       scope.time = scope.$moment().format('HH:mm');
     }, 30000);
@@ -124,6 +123,7 @@ export default {
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
           this.$store.commit('setHomeInfo', doc.data());
+          this.isLoading = false;
         });
       });
   },

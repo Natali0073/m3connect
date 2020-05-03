@@ -92,7 +92,6 @@ export default {
     ** You can extend webpack config here
     */
     extractCSS: true,
-    vendor: ['/scripts/hcap.js',],
     extend(
       config,
       {
