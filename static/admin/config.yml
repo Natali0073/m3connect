@@ -23,7 +23,6 @@ collections:
       - { label: 'Cuisine', name: 'cuisine', widget: 'markdown' }
       - { label: 'Additional info', name: 'additionalInfo', widget: 'markdown' }
       - { label: 'Image', name: 'image', widget: 'image', required: false, media_library: { config: {multiple: false } } }
-
 - name: "spa"
   label: "SpaBlog"
   format: 'json'
