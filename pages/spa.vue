@@ -5,7 +5,7 @@
       v-if="pageInfo"
       :data="pageInfo"/>
     <div v-else>No data</div>
-    <div class="back-button"><BackButton/></div>
+    <BackButton/>
   </div>
 </template>
 
@@ -59,9 +59,6 @@ export default {
 </script>
 
 <style>
-.back-button {
-  margin: auto;
-}
 .text-white {
   color: #ffffff;
 }

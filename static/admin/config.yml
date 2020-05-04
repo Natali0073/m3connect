@@ -6,8 +6,7 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'data'
-    label: 'BlDataog'
+- label: 'BlDataog'
     format: 'json'
     folder: 'assets/content/data'
     create: true
@@ -22,4 +21,17 @@ collections:
       - { label: 'Website', name: 'website', widget: 'string' }
       - { label: 'Cuisine', name: 'cuisine', widget: 'markdown' }
       - { label: 'Additional info', name: 'additionalInfo', widget: 'markdown' }
+      - { label: 'Image', name: 'image', widget: 'image', required: false, media_library: { config: {multiple: false } } }
+      
+- label: "SpaBlog"
+    format: 'json'
+    folder: 'assets/content/spa'
+    create: true
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'id', name: 'id', widget: 'number' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Content', name: 'content', widget: 'list' }
       - { label: 'Image', name: 'image', widget: 'image', required: false, media_library: { config: {multiple: false } } }
