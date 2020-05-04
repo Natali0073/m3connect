@@ -6,10 +6,10 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "blog"
-    label: 'BlDataog'
+  - name: "restaurant"
+    label: 'RestaurantBlog'
     format: 'json'
-    folder: 'assets/content/data'
+    folder: 'assets/content/restaurant'
     create: true
     slug: '{{slug}}'
     editor:
