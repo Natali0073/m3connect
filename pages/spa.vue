@@ -5,7 +5,7 @@
       v-if="pageInfo"
       :data="pageInfo"/>
     <div v-else>No data</div>
-    <BackButton/>
+    <BackButton />
   </div>
 </template>
 
@@ -30,8 +30,8 @@ export default {
     };
   },
   computed: {
-    restaurantInfo() {
-      return this.$store.state.cmsData;
+    spaInfo() {
+      return this.$store.state.cmsSpaData;
     },
     menuList() {
       return this.$store.getters.restaurantMenu;
@@ -41,18 +41,13 @@ export default {
   created() {
     this.getInfo(this.menuIndex);
   },
-  async fetch({ store }) {
-    if (store.getters.restaurantMenu.length === 0) {
-      await store.dispatch('fetchRestaurantMenuList');
-    }
-  },
   methods: {
     changeView(value) {
       this.getInfo(value);
     },
     getInfo(value) {
-      const info = this.restaurantInfo.filter(el => el.id === +value);
-      this.pageInfo = info[0];
+      const data = this.spaInfo.slice();
+      this.pageInfo = data.sort((a, b) => a.id - b.id);
     },
   },
 };

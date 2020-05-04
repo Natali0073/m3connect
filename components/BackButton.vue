@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-12 icon-with-border pa-3">
+  <div class="icon-with-border pa-3">
     <nuxt-link
       exact
       no-prefetch

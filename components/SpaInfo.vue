@@ -1,9 +1,9 @@
 <template>
   <div class="flex-column">
     <h1 class="text-center courgette-font">Spa Facilties</h1>
-    <div class="d-flex align-center justify-center">
+    <div class="d-flex align-center justify-center flex-wrap">
       <div 
-        v-for="(item) in mockData"
+        v-for="(item) in data"
         :key="item.title" 
         class="item-container">
         <img
@@ -32,7 +32,7 @@
 <script>
 export default {
   props: {
-    data: Object,
+    data: Array,
   },
   data() {
     return {
@@ -56,7 +56,7 @@ export default {
 <style scoped>
 .item-container {
   width: 30%;
-  margin: 30px;
+  margin: 15px 30px;
 }
 
 .text-center {
@@ -68,9 +68,10 @@ export default {
   position: relative;
   color: #000000;
   width: 70%;
-  top: -70px;
-  left: 35%;
+  margin-top: -100px;
+  margin-left: 35%;
   padding: 20px;
+  height: 160px;
 }
 
 .courgette-font {

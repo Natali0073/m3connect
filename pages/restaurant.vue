@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     restaurantInfo() {
-      return this.$store.state.cmsData;
+      return this.$store.state.cmsRestaurantData;
     },
     menuList() {
       return this.$store.getters.restaurantMenu;

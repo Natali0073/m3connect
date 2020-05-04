@@ -3,7 +3,8 @@ const firebase = require('../firebaseConfig.js');
 export const state = () => ({
   homeInfo: null,
   restaurantMenu: [],
-  cmsData: [],
+  cmsRestaurantData: [],
+  cmsSpaData: [],
   weather: null,
 });
 
@@ -14,13 +15,26 @@ export const mutations = {
   setRestaurantMenu(state, restaurantMenu) {
     state.restaurantMenu = restaurantMenu;
   },
-  setCmsData(state, list) {
-    state.cmsData = list;
+  setCmsRestaurantData(state, list) {
+    state.cmsRestaurantData = list;
+  },
+  setCmsSpaData(state, list) {
+    console.log('list', list);
+    state.cmsSpaData = list;
   },
   setWeather(state, list) {
     state.weather = list;
   },
 };
+
+function getCmsData(dataFiles) {
+  const data = dataFiles.keys().map(key => {
+    let res = dataFiles(key);
+    res.slug = key.slice(2, -5);
+    return res;
+  });
+  return data;
+}
 
 export const actions = {
   async fetchRestaurantMenuList({ commit }) {
@@ -30,17 +44,21 @@ export const actions = {
     commit('setRestaurantMenu', restaurantMenu);
   },
   async nuxtServerInit({ commit }) {
-    let files = await require.context(
+    let restaurantFiles = await require.context(
       '~/assets/content/data/',
       false,
       /\.json$/
     );
-    let data = files.keys().map(key => {
-      let res = files(key);
-      res.slug = key.slice(2, -5);
-      return res;
-    });
-    await commit('setCmsData', data);
+    let spaFiles = await require.context(
+      '~/assets/content/spa/',
+      false,
+      /\.json$/
+    );
+
+    let restaurantData = getCmsData(restaurantFiles);
+    let spaData = getCmsData(spaFiles);
+    await commit('setCmsRestaurantData', restaurantData);
+    await commit('setCmsSpaData', spaData);
   },
   async fetchWeather({ commit }) {
     const apiKey = '370ea4e0741c93ac23290a1e7c524975';
