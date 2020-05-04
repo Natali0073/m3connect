@@ -6,7 +6,7 @@
         :title="pageTitle"
         :menu-list="menuList"
         @selectMenu="changeView($event)"/>
-      <BackButton/>
+      <BackButton class="mb-12"/>
     </div>
     <div class="main-bar pa-12">
       <RestaurantsInfo
