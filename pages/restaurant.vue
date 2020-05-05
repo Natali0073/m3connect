@@ -35,24 +35,22 @@ export default {
       pageTitle: 'Gourmet',
       menuIndex: '1',
       pageInfo: {},
+      menuList: [
+        { title: 'Breakfast', value: 1 },
+        { title: 'Lunch', value: 2 },
+        { title: 'Dinner', value: 3 },
+        { title: 'Bar', value: 4 },
+      ],
     };
   },
   computed: {
     restaurantInfo() {
       return this.$store.state.cmsRestaurantData;
     },
-    menuList() {
-      return this.$store.getters.restaurantMenu;
-    },
   },
   beforeCreate() {},
   created() {
     this.getInfo(this.menuIndex);
-  },
-  async fetch({ store }) {
-    if (store.getters.restaurantMenu.length === 0) {
-      await store.dispatch('fetchRestaurantMenuList');
-    }
   },
   methods: {
     changeView(value) {

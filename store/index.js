@@ -36,12 +36,6 @@ function getCmsData(dataFiles) {
 }
 
 export const actions = {
-  async fetchRestaurantMenuList({ commit }) {
-    const restaurantMenu = await this.$axios.$get(
-      'https://my-json-server.typicode.com/Natali0073/m3connect-test-data/menuList'
-    );
-    commit('setRestaurantMenu', restaurantMenu);
-  },
   async nuxtServerInit({ commit }) {
     let restaurantFiles = await require.context(
       '~/assets/content/data/',
