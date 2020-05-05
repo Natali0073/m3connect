@@ -1,8 +1,8 @@
 <template>
   <div class="h-100 text-white">
     <Logo/>
-    <h1 class="text-center title">SPA FACILITIES</h1>
-    <SpaInfo
+    <h1 class="text-center title">ATTRACTIONS</h1>
+    <AttractionsInfo
       v-if="pageInfo"
       :data="pageInfo"/>
     <div v-else>No data</div>

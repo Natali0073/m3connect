@@ -5,6 +5,7 @@ export const state = () => ({
   restaurantMenu: [],
   cmsRestaurantData: [],
   cmsSpaData: [],
+  cmsAttractionsData: [],
   weather: null,
 });
 
@@ -20,6 +21,9 @@ export const mutations = {
   },
   setCmsSpaData(state, list) {
     state.cmsSpaData = list;
+  },
+  setCmsAttractionsData(state, list) {
+    state.cmsAttractionsData = list;
   },
   setWeather(state, list) {
     state.weather = list;
@@ -42,16 +46,25 @@ export const actions = {
       false,
       /\.json$/
     );
+
     let spaFiles = await require.context(
       '~/assets/content/spa/',
       false,
       /\.json$/
     );
 
-    let restaurantData = getCmsData(restaurantFiles);
-    let spaData = getCmsData(spaFiles);
+    let attractionsFiles = await require.context(
+      '~/assets/content/attractions/',
+      false,
+      /\.json$/
+    );
+
+    const restaurantData = getCmsData(restaurantFiles);
+    const spaData = getCmsData(spaFiles);
+    const attractionsData = getCmsData(attractionsFiles);
     await commit('setCmsRestaurantData', restaurantData);
     await commit('setCmsSpaData', spaData);
+    await commit('setCmsAttractionsData', attractionsData);
   },
   async fetchWeather({ commit }) {
     const apiKey = '370ea4e0741c93ac23290a1e7c524975';

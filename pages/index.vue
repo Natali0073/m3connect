@@ -81,12 +81,7 @@ export default {
         {
           icon: 'mdi-ticket',
           title: 'Attractions',
-          to: '/restaurant',
-        },
-        {
-          icon: 'mdi-terrain',
-          title: 'Traveling',
-          to: '/restaurant',
+          to: '/attractions',
         },
       ],
       time: this.$moment().format('HH:mm'),

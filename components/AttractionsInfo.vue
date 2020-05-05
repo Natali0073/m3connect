@@ -31,22 +31,6 @@ export default {
   props: {
     data: Array,
   },
-  data() {
-    return {
-      mockData: [
-        {
-          image: '/img/bar_compressed.png',
-          title: 'Pool',
-          content: ['Indoor pool', 'Celling windows', 'Bright natural light '],
-        },
-        {
-          image: '/img/dinner_compressed.png',
-          title: 'Spa',
-          content: ['Indoor pool', 'Celling windows', 'Bright natural light '],
-        },
-      ],
-    };
-  },
 };
 </script>
 
