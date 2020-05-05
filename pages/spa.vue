@@ -1,6 +1,7 @@
 <template>
   <div class="h-100 text-white">
     <Logo/>
+    <h1 class="text-center title">SPA FACILITIES</h1>
     <SpaInfo
       v-if="pageInfo"
       :data="pageInfo"/>
@@ -58,16 +59,12 @@ export default {
   color: #ffffff;
 }
 
-.side-bar {
-  width: 30%;
+.title {
+  margin-top: -30px;
+  text-align: center;
 }
 
 .h-100 {
   height: 100%;
-}
-
-.main-bar {
-  width: 70%;
-  background: black;
 }
 </style>

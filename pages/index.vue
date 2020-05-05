@@ -127,25 +127,6 @@ export default {
         });
       });
   },
-  methods: {
-    tvClick() {
-      console.log(1);
-      var request = webOS.service.request('luna://com.webos.audio', {
-        method: 'setMuted',
-        parameters: { muted: true },
-        onSuccess: function(inResponse) {
-          console.log('TV is muted');
-          // To-Do something
-        },
-        onFailure: function(inError) {
-          console.log('Failed to set muted');
-          console.log('[' + inError.errorCode + ']: ' + inError.errorText);
-          // To-Do something
-          return;
-        },
-      });
-    },
-  },
 };
 </script>
 

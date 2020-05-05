@@ -1,9 +1,8 @@
 <template>
   <div class="flex-column">
-    <h1 class="text-center courgette-font">Spa Facilties</h1>
     <div class="d-flex align-center justify-center flex-wrap">
       <div 
-        v-for="(item) in data"
+        v-for="item in data"
         :key="item.title" 
         class="item-container">
         <img
@@ -55,7 +54,7 @@ export default {
 
 <style scoped>
 .item-container {
-  width: 30%;
+  width: 35%;
   margin: 15px 30px;
 }
 
@@ -72,29 +71,5 @@ export default {
   margin-left: 35%;
   padding: 20px;
   height: 160px;
-}
-
-.courgette-font {
-  font-family: 'Courgette', cursive;
-}
-
-.text-14 {
-  font-size: 14px;
-}
-
-.text-18 {
-  font-size: 18px;
-}
-
-.system-gold-text {
-  color: #846b42;
-}
-
-.bold-text {
-  font-weight: bold;
-}
-
-.theme--light.v-divider {
-  border-color: #846b42;
 }
 </style>

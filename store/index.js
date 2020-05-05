@@ -19,7 +19,6 @@ export const mutations = {
     state.cmsRestaurantData = list;
   },
   setCmsSpaData(state, list) {
-    console.log('list', list);
     state.cmsSpaData = list;
   },
   setWeather(state, list) {
