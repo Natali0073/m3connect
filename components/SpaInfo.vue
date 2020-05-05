@@ -54,8 +54,8 @@ export default {
 
 <style scoped>
 .item-container {
-  width: 35%;
-  margin: 15px 30px;
+  width: 30%;
+  margin: 15px 50px;
 }
 
 .text-center {
