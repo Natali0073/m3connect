@@ -38,7 +38,7 @@ function getCmsData(dataFiles) {
 export const actions = {
   async nuxtServerInit({ commit }) {
     let restaurantFiles = await require.context(
-      '~/assets/content/data/',
+      '~/assets/content/blog/',
       false,
       /\.json$/
     );
