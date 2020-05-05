@@ -53,18 +53,18 @@ export const actions = {
       /\.json$/
     );
 
-    let attractionsFiles = await require.context(
-      '~/assets/content/attractions/',
-      false,
-      /\.json$/
-    );
+    // let attractionsFiles = await require.context(
+    //   '~/assets/content/attractions/',
+    //   false,
+    //   /\.json$/
+    // );
 
     const restaurantData = getCmsData(restaurantFiles);
     const spaData = getCmsData(spaFiles);
-    const attractionsData = getCmsData(attractionsFiles);
+    // const attractionsData = getCmsData(attractionsFiles);
     await commit('setCmsRestaurantData', restaurantData);
     await commit('setCmsSpaData', spaData);
-    await commit('setCmsAttractionsData', attractionsData);
+    // await commit('setCmsAttractionsData', attractionsData);
   },
   async fetchWeather({ commit }) {
     const apiKey = '370ea4e0741c93ac23290a1e7c524975';
