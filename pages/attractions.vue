@@ -14,14 +14,14 @@
 import Logo from '@/components/Logo';
 import SideMenu from '@/components/SideMenu';
 import BackButton from '@/components/BackButton';
-import SpaInfo from '@/components/SpaInfo';
+import AttractionsInfo from '@/components/AttractionsInfo';
 
 export default {
   components: {
     Logo,
     SideMenu,
     BackButton,
-    SpaInfo,
+    AttractionsInfo,
   },
   data() {
     return {
@@ -29,23 +29,16 @@ export default {
     };
   },
   computed: {
-    spaInfo() {
-      return this.$store.state.cmsSpaData;
-    },
-    menuList() {
-      return this.$store.getters.restaurantMenu;
+    attractionsInfo() {
+      return this.$store.state.cmsAttractionsData;
     },
   },
-  beforeCreate() {},
   created() {
-    this.getInfo(this.menuIndex);
+    this.getInfo();
   },
   methods: {
-    changeView(value) {
-      this.getInfo(value);
-    },
-    getInfo(value) {
-      const data = this.spaInfo.slice();
+    getInfo() {
+      const data = this.attractionsInfo.slice();
       this.pageInfo = data.sort((a, b) => a.id - b.id);
     },
   },

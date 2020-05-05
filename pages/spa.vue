@@ -32,19 +32,12 @@ export default {
     spaInfo() {
       return this.$store.state.cmsSpaData;
     },
-    menuList() {
-      return this.$store.getters.restaurantMenu;
-    },
   },
-  beforeCreate() {},
   created() {
-    this.getInfo(this.menuIndex);
+    this.getInfo();
   },
   methods: {
-    changeView(value) {
-      this.getInfo(value);
-    },
-    getInfo(value) {
+    getInfo() {
       const data = this.spaInfo.slice();
       this.pageInfo = data.sort((a, b) => a.id - b.id);
     },

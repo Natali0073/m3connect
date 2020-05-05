@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex align-center justify-center flex-wrap">
     <div 
-      v-for="item in data"
+      v-for="item in pageInfo"
       :key="item.title" 
       class="item-container">
       <img
@@ -19,7 +19,14 @@
           v-for="(data) in item.content"
           :key="data"
           style="font-family: Source Sans Pro, sans-serif; " >
-          <span>✓ {{ data }}</span>
+          <span>&#10003; {{ data }}</span>
+        </div>
+        <div class="booking d-flex align-center flex-column">
+          <div class="price">{{ item.price }} &#8364;</div>
+          <div class="avaliability">Book on: {{ item.bookingDate }}</div>
+          <v-btn 
+            class="mt-3 mb-3" 
+            color="green">Book now</v-btn>
         </div>
       </div>
     </div>
@@ -27,9 +34,23 @@
 </template>
 
 <script>
+import * as moment from 'moment';
 export default {
   props: {
     data: Array,
+  },
+  data() {
+    return {
+      pageInfo: [],
+    };
+  },
+  created() {
+    this.pageInfo = this.data.map(el => ({
+      ...el,
+      bookingDate: moment()
+        .add(el.id, 'day')
+        .format('DD/MM/YYYY'),
+    }));
   },
 };
 </script>
@@ -37,21 +58,47 @@ export default {
 <style scoped>
 .item-container {
   width: 30%;
-  margin: 15px 50px;
+  margin: 15px 30px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.price,
+.avaliability {
+  padding: 10px;
+}
+
+.avaliability {
+  background: #c01414;
+  color: #ffffff;
+  width: 100%;
+  text-align: center;
 }
 
 .text-center {
   text-align: center;
 }
 
+.booking {
+  margin-top: 10px;
+  border: 1px solid #000000;
+}
+
 .content-info {
-  background: #ffff;
+  background: rgba(255, 255, 255, 0.8);
   position: relative;
   color: #000000;
-  width: 70%;
+  width: 80%;
   margin-top: -100px;
-  margin-left: 35%;
+  margin-left: 25%;
   padding: 20px;
-  height: 160px;
+  box-shadow: -8px -7px 38px -12px rgba(0, 0, 0, 1);
+  border-radius: 5px;
+}
+
+.v-btn {
+  color: #ffffff;
 }
 </style>

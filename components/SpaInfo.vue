@@ -19,7 +19,7 @@
           v-for="(data) in item.content"
           :key="data"
           style="font-family: Source Sans Pro, sans-serif; " >
-          <span>✓ {{ data }}</span>
+          <span>&#10003; {{ data }}</span>
         </div>
       </div>
     </div>
@@ -56,12 +56,20 @@ export default {
   margin: 15px 50px;
 }
 
+.item-container:nth-child(odd) {
+  margin-left: 100px;
+}
+
+.item-container:nth-child(even) {
+  margin-right: 100px;
+}
+
 .text-center {
   text-align: center;
 }
 
 .content-info {
-  background: #ffff;
+  background: rgba(255, 255, 255, 0.8);
   position: relative;
   color: #000000;
   width: 70%;
@@ -69,5 +77,7 @@ export default {
   margin-left: 35%;
   padding: 20px;
   height: 160px;
+  box-shadow: -8px -7px 38px -12px rgba(0, 0, 0, 1);
+  border-radius: 5px;
 }
 </style>

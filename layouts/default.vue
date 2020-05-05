@@ -23,6 +23,6 @@ export default {
 <style>
 .main-background {
   background-image: url('../assets/images/Artboard.png') !important;
-  background-size: cover;
+  background-size: cover !important;
 }
 </style>

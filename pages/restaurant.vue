@@ -48,7 +48,6 @@ export default {
       return this.$store.state.cmsRestaurantData;
     },
   },
-  beforeCreate() {},
   created() {
     this.getInfo(this.menuIndex);
   },
