@@ -16,7 +16,7 @@
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.4);
   max-width: 48px;
-  margin: auto;
+  margin: 48px auto 0;
 }
 
 .icon-with-border a {

@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-center justify-center flex-wrap">
+  <div class="d-flex align-center flex-wrap attractions-content">
     <div 
       v-for="item in pageInfo"
       :key="item.title" 
@@ -13,12 +13,11 @@
       >
       <div class="content-info">
         <div 
-          class="text-center" 
-          style="font-family: Source Sans Pro, sans-serif;">{{ item.title.toUpperCase() }}</div>
+          class="text-center source-font">{{ item.title.toUpperCase() }}</div>
         <div 
           v-for="(data) in item.content"
           :key="data"
-          style="font-family: Source Sans Pro, sans-serif; " >
+          class="source-font">
           <span>&#10003; {{ data }}</span>
         </div>
         <div class="booking d-flex align-center flex-column">
@@ -57,8 +56,16 @@ export default {
 
 <style scoped>
 .item-container {
-  width: 30%;
+  width: 44%;
   margin: 15px 30px;
+}
+
+.attractions-content {
+  margin: 0 10%;
+}
+
+.source-font {
+  font-family: Source Sans Pro, sans-serif;
 }
 
 .price {

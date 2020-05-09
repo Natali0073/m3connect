@@ -1,12 +1,12 @@
 <template>
   <div class="d-flex h-100 text-white">
-    <div class="side-bar d-flex flex-column align-center justify-space-between">
+    <div class="side-bar d-flex flex-column align-center">
       <Logo/>
       <SideMenu
         :title="pageTitle"
         :menu-list="menuList"
         @selectMenu="changeView($event)"/>
-      <BackButton class="mb-12"/>
+      <BackButton/>
     </div>
     <div class="main-bar pa-12">
       <RestaurantsInfo
