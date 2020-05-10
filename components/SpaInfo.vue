@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-center justify-center flex-wrap">
+  <div class="">
     <div 
       v-for="item in data"
       :key="item.title" 

@@ -19,7 +19,6 @@
     <h2 class="courgette-font font-weight-light my-10">Order in the room</h2>
     <h2 class="font-weight-light">Menu:</h2>
     <v-expansion-panels
-      v-model="panel"
       multiple>
       <v-expansion-panel
         v-for="(item,i) in menuList.content"
