@@ -11,7 +11,8 @@
     <div class="main-bar pa-12">
       <RestaurantsInfo
         v-if="pageInfo"
-        :data="pageInfo"/>
+        :data="pageInfo"
+        :menu-list="pageMenu"/>
       <div v-else>No data</div>
     </div>
   </div>
@@ -22,6 +23,8 @@ import Logo from '@/components/Logo';
 import SideMenu from '@/components/SideMenu';
 import BackButton from '@/components/BackButton';
 import RestaurantsInfo from '@/components/RestaurantsInfo';
+import { MENU_LIST_COLLECTIONS } from '@/utils';
+const firebase = require('../firebaseConfig.js');
 
 export default {
   components: {
@@ -35,6 +38,7 @@ export default {
       pageTitle: 'Gourmet',
       menuIndex: '1',
       pageInfo: {},
+      pageMenu: {},
       menuList: [
         { title: 'Breakfast', value: 1 },
         { title: 'Lunch', value: 2 },
@@ -51,13 +55,29 @@ export default {
   created() {
     this.getInfo(this.menuIndex);
   },
+  mounted() {},
   methods: {
     changeView(value) {
+      this.menuIndex = value;
       this.getInfo(value);
     },
     getInfo(value) {
       const info = this.restaurantInfo.filter(el => el.id === +value);
       this.pageInfo = info[0];
+      this.getMenuFromFirestore();
+    },
+    getMenuFromFirestore() {
+      const collectionDocument = MENU_LIST_COLLECTIONS.find(
+        el => el.id === +this.menuIndex
+      );
+      this.pageMenu = {};
+      firebase.db
+        .collection('menu-list')
+        .doc(collectionDocument.name)
+        .get()
+        .then(querySnapshot => {
+          this.pageMenu = querySnapshot.data();
+        });
     },
   },
 };

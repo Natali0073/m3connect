@@ -7,6 +7,7 @@ export const state = () => ({
   cmsSpaData: [],
   cmsAttractionsData: [],
   weather: null,
+  menuList: [],
 });
 
 export const mutations = {
@@ -27,6 +28,9 @@ export const mutations = {
   },
   setWeather(state, list) {
     state.weather = list;
+  },
+  setMenuList(state, list) {
+    state.menuList = list;
   },
 };
 
