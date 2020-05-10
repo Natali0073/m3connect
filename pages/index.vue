@@ -29,7 +29,7 @@
         <div class="d-flex flex-column justify-center align-center">
           <div
             class="greetings-title text-center text-color-light mb-10 dancing-font"
-          >Welcome {{ homeInfo.gender === 'male' ? 'Mr.' : 'Mrs.' }} {{ homeInfo.userLastName }}. Enjoy your stay!
+          >Welcome {{ homeInfo && homeInfo.gender === 'male' ? 'Mr.' : 'Mrs.' }} {{ homeInfo ? homeInfo.userLastName : '' }}. Enjoy your stay!
           </div>
           <v-btn-toggle group>
             <v-btn
@@ -66,7 +66,7 @@ export default {
   },
   data() {
     return {
-      isLoading: true,
+      isLoading: false,
       items: [
         {
           icon: 'mdi-silverware',
@@ -112,15 +112,15 @@ export default {
     }
   },
   mounted() {
-    firebase.db
-      .collection('user')
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          this.$store.commit('setHomeInfo', doc.data());
-          this.isLoading = false;
-        });
-      });
+    // firebase.db
+    //   .collection('user')
+    //   .get()
+    //   .then(querySnapshot => {
+    //     querySnapshot.forEach(doc => {
+    //       this.$store.commit('setHomeInfo', doc.data());
+    //       this.isLoading = false;
+    //     });
+    //   });
   },
 };
 </script>

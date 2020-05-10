@@ -67,17 +67,17 @@ export default {
       this.getMenuFromFirestore();
     },
     getMenuFromFirestore() {
-      const collectionDocument = MENU_LIST_COLLECTIONS.find(
-        el => el.id === +this.menuIndex
-      );
-      this.pageMenu = {};
-      firebase.db
-        .collection('menu-list')
-        .doc(collectionDocument.name)
-        .get()
-        .then(querySnapshot => {
-          this.pageMenu = querySnapshot.data();
-        });
+      // const collectionDocument = MENU_LIST_COLLECTIONS.find(
+      //   el => el.id === +this.menuIndex
+      // );
+      // this.pageMenu = {};
+      // firebase.db
+      //   .collection('menu-list')
+      //   .doc(collectionDocument.name)
+      //   .get()
+      //   .then(querySnapshot => {
+      //     this.pageMenu = querySnapshot.data();
+      //   });
     },
   },
 };
