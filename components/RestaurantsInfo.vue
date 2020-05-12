@@ -19,6 +19,7 @@
     <h2 class="courgette-font font-weight-light my-10">Order in the room</h2>
     <h2 class="font-weight-light">Menu:</h2>
     <v-expansion-panels
+      v-model="panel"
       multiple>
       <v-expansion-panel
         v-for="(item,i) in menuList.content"
@@ -33,7 +34,8 @@
             <v-checkbox 
               v-model="selected"
               :value="element.name"
-              :label="`${element.name}`"/>
+              :label="`${element.name}`"
+              color="orange darken-3"/>
             <span 
               v-if="element.ingredients" 
               class="ml-3 mt-3 text-11">({{ element.ingredients }})</span>
@@ -83,6 +85,7 @@ export default {
   },
   data() {
     return {
+      panel: [],
       selected: [],
     };
   },

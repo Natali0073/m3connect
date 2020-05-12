@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .icon-with-border {
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.4);

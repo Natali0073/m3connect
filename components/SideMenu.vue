@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-bar d-flex flex-column align-center mx-12">
+  <div class="menu-bar d-flex flex-column align-center ma-12">
     <div class="icon-with-border pa-3">
       <v-icon
         x-large

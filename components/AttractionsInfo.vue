@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="d-flex align-center flex-wrap attractions-content">
     <div 
       v-for="item in pageInfo"
       :key="item.title" 
