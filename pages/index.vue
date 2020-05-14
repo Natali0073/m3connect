@@ -11,6 +11,12 @@
         <Logo/>
         <v-spacer/>
         <v-toolbar-items>
+          <div 
+            class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light"
+            @mouseover="openBanner">
+            <v-icon color="white">mdi-bell</v-icon>
+            <span class="notification-counter">0</span>
+          </div>
           <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
             <v-icon color="white">mdi-weather-sunny</v-icon>
             <span>{{ weather.current.temperature }} &#8451;</span>
@@ -25,6 +31,21 @@
           </div>
         </v-toolbar-items>
       </v-toolbar>
+      <div 
+        v-if="showBanner" 
+        class="banner-container">
+        <v-banner 
+          elevation="10"
+          transition="slide-y-transition">
+          <div>Your dishes is <span class="text-bold">preparing</span></div>
+          <v-divider class="my-3" />
+          <div>You booked <span class="text-bold">tour</span> on <span class="text-bold">date</span></div>
+          <template v-slot:actions="{ dismiss }">
+            <v-icon 
+              @click="closeBanner">mdi-close</v-icon>
+          </template>
+        </v-banner>
+      </div>
       <div class="d-flex justify-center align-center main-menu">
         <div class="d-flex flex-column justify-center align-center">
           <div
@@ -67,6 +88,8 @@ export default {
   data() {
     return {
       isLoading: false,
+      showBanner: false,
+      timerid: undefined,
       items: [
         {
           icon: 'mdi-silverware',
@@ -112,15 +135,35 @@ export default {
     }
   },
   mounted() {
-    // firebase.db
-    //   .collection('user')
-    //   .get()
-    //   .then(querySnapshot => {
-    //     querySnapshot.forEach(doc => {
-    //       this.$store.commit('setHomeInfo', doc.data());
-    //       this.isLoading = false;
-    //     });
-    //   });
+    firebase.db
+      .collection('user')
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          this.$store.commit('setHomeInfo', doc.data());
+          this.isLoading = false;
+        });
+      });
+  },
+  methods: {
+    openBanner() {
+      this.showBanner = true;
+
+      if (this.timerid) {
+        clearTimeout(this.timerid);
+      }
+
+      this.timerid = setTimeout(() => {
+        this.showBanner = false;
+      }, 5000);
+    },
+    closeBanner() {
+      this.showBanner = false;
+
+      if (this.timerid) {
+        clearTimeout(this.timerid);
+      }
+    },
   },
 };
 </script>
@@ -142,6 +185,10 @@ export default {
   font-size: 0.7em;
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
 .main-toolbar {
   display: flex;
   justify-content: space-between;
@@ -158,9 +205,9 @@ export default {
 }
 
 .main-menu {
-  height: 100%;
   width: 100%;
   position: absolute;
+  top: calc(50% - 150px);
 }
 
 .h-100 {
@@ -169,5 +216,29 @@ export default {
 
 .w-100 {
   width: 100%;
+}
+
+.banner-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.banner-container .v-banner__actions {
+  align-self: flex-start !important;
+}
+
+.notification-counter {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1;
+  padding: 4px 6px;
+  position: absolute;
+  top: 10px;
+  margin-left: -10px;
+  background-color: #f44336;
+  border-color: #f44336;
 }
 </style>
