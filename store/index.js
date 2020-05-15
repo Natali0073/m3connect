@@ -8,6 +8,7 @@ export const state = () => ({
   cmsAttractionsData: [],
   weather: null,
   menuList: [],
+  bookings: [],
 });
 
 export const mutations = {
@@ -31,6 +32,9 @@ export const mutations = {
   },
   setMenuList(state, list) {
     state.menuList = list;
+  },
+  setBookings(state, list) {
+    state.bookings = list;
   },
 };
 
@@ -84,4 +88,5 @@ export const getters = {
   homeInfo: s => s.homeInfo,
   restaurantMenu: s => s.restaurantMenu,
   weather: s => s.weather,
+  bookings: s => s.bookings,
 };

@@ -12,10 +12,11 @@
         <v-spacer/>
         <v-toolbar-items>
           <div 
+            v-if="bookings.length"
             class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light"
             @mouseover="openBanner">
             <v-icon color="white">mdi-bell</v-icon>
-            <span class="notification-counter">0</span>
+            <span class="notification-counter">{{ bookings.length }}</span>
           </div>
           <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
             <v-icon color="white">mdi-weather-sunny</v-icon>
@@ -37,9 +38,14 @@
         <v-banner 
           elevation="10"
           transition="slide-y-transition">
-          <div>Your dishes is <span class="text-bold">preparing</span></div>
+          <div>Your dishes are <span class="text-bold">preparing</span></div>
           <v-divider class="my-3" />
-          <div>You booked <span class="text-bold">tour</span> on <span class="text-bold">date</span></div>
+          <div 
+            v-for="item in bookings"
+            :key="item.id"
+            class="my-2">
+            You booked <span class="text-bold">{{ item.title }}</span> at <span class="text-bold">{{ item.bookingDate }}</span>
+          </div>
           <template v-slot:actions="{ dismiss }">
             <v-icon 
               @click="closeBanner">mdi-close</v-icon>
@@ -78,6 +84,8 @@
 <script>
 import Logo from '@/components/Logo';
 import Loading from '@/components/Loading';
+import * as moment from 'moment';
+
 const firebase = require('../firebaseConfig.js');
 
 export default {
@@ -87,9 +95,9 @@ export default {
   },
   data() {
     return {
-      isLoading: false,
+      isLoading: true,
       showBanner: false,
-      timerid: undefined,
+      timer: undefined,
       items: [
         {
           icon: 'mdi-silverware',
@@ -115,9 +123,11 @@ export default {
     homeInfo() {
       return this.$store.getters.homeInfo;
     },
-
     weather() {
       return this.$store.getters.weather;
+    },
+    bookings() {
+      return this.$store.getters.bookings;
     },
   },
   beforeCreate() {
@@ -135,33 +145,54 @@ export default {
     }
   },
   mounted() {
-    firebase.db
-      .collection('user')
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          this.$store.commit('setHomeInfo', doc.data());
-          this.isLoading = false;
-        });
-      });
+    this.getBookings();
+    this.getUser();
   },
   methods: {
+    getUser() {
+      firebase.db
+        .collection('user')
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            this.$store.commit('setHomeInfo', doc.data());
+            this.isLoading = false;
+          });
+        });
+    },
+    getBookings() {
+      firebase.db
+        .collection('booked-tours')
+        .get()
+        .then(querySnapshot => {
+          const bookings = [];
+          querySnapshot.forEach(doc => {
+            bookings.push({
+              ...doc.data(),
+              bookingDate: moment()
+                .add(doc.data().id, 'day')
+                .format('DD/MM/YYYY'),
+            });
+          });
+          this.$store.commit('setBookings', bookings);
+        });
+    },
     openBanner() {
       this.showBanner = true;
 
-      if (this.timerid) {
-        clearTimeout(this.timerid);
+      if (this.timer) {
+        clearTimeout(this.timer);
       }
 
-      this.timerid = setTimeout(() => {
+      this.timer = setTimeout(() => {
         this.showBanner = false;
       }, 5000);
     },
     closeBanner() {
       this.showBanner = false;
 
-      if (this.timerid) {
-        clearTimeout(this.timerid);
+      if (this.timer) {
+        clearTimeout(this.timer);
       }
     },
   },
@@ -226,6 +257,7 @@ export default {
 
 .banner-container .v-banner__actions {
   align-self: flex-start !important;
+  margin-left: 30px;
 }
 
 .notification-counter {

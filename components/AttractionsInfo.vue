@@ -24,8 +24,10 @@
           <div class="price">{{ item.price }} &#8364;</div>
           <div class="avaliability">Book on: {{ item.bookingDate }}</div>
           <v-btn 
-            class="mt-3 mb-3" 
-            color="green">Book now</v-btn>
+            :disabled="item.disabled"
+            color="green" 
+            class="mt-3 mb-3"
+            @click="bookTour(item)">{{ item.disabled ? 'Booked' : 'Book now' }}</v-btn>
         </div>
       </div>
     </div>
@@ -34,6 +36,8 @@
 
 <script>
 import * as moment from 'moment';
+const firebase = require('../firebaseConfig.js');
+
 export default {
   props: {
     data: Array,
@@ -43,13 +47,36 @@ export default {
       pageInfo: [],
     };
   },
+  computed: {
+    bookings() {
+      return this.$store.getters.bookings;
+    },
+  },
   created() {
     this.pageInfo = this.data.map(el => ({
       ...el,
       bookingDate: moment()
         .add(el.id, 'day')
         .format('DD/MM/YYYY'),
+      disabled: this.bookings.some(item => item.id === el.id),
     }));
+  },
+  methods: {
+    bookTour(tour) {
+      firebase.db
+        .collection('booked-tours')
+        .add({
+          title: tour.title,
+          id: tour.id,
+        })
+        .then(() => {
+          const tourIndex = this.pageInfo.findIndex(el => el.id === tour.id);
+          this.pageInfo[tourIndex].disabled = true;
+        })
+        .catch(function(error) {
+          console.error('Error adding document: ', error);
+        });
+    },
   },
 };
 </script>
