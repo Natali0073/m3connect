@@ -16,7 +16,7 @@
             class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light"
             @mouseover="openBanner">
             <v-icon color="white">mdi-bell</v-icon>
-            <span class="notification-counter">{{ bookings.length }}</span>
+            <span class="notification-counter">{{ bookings.length + 1 }}</span>
           </div>
           <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
             <v-icon color="white">mdi-weather-sunny</v-icon>

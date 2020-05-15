@@ -43,6 +43,10 @@
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
+    <v-btn 
+      v-if="selected.length"
+      color="green" 
+      class="mt-3 mb-3">Submit</v-btn>
     <div class="courgette-font font-weight-light mt-6 system-gold-text text-18">or</div>
     <h2 class="courgette-font my-10 font-weight-light">Reserve a table</h2>
     <div class="d-flex">
