@@ -18,7 +18,7 @@
             <v-icon 
               color="white" 
               large>mdi-bell</v-icon>
-            <span class="notification-counter">{{ bookings.length + 1 }}</span>
+            <span class="notification-counter">{{ bookings.length }}</span>
           </div>
           <div class="d-flex flex-column justify-center align-center mr-5 text-color-light top-icon">
             <v-icon 
@@ -46,13 +46,12 @@
         <v-banner 
           elevation="10"
           transition="slide-y-transition">
-          <div>Your dishes are <span class="text-bold">preparing</span></div>
-          <v-divider class="my-3" />
           <div 
             v-for="item in bookings"
             :key="item.id"
             class="my-2">
             <span class="text-bold">{{ item.title }}</span> at <span class="text-bold">{{ item.bookingDate }}</span>
+            <v-divider class="my-3" />
           </div>
           <template v-slot:actions="{ dismiss }">
             <v-icon 
