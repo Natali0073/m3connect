@@ -84,6 +84,10 @@ export default {
   margin-bottom: 10px;
 }
 
+.v-list-item__title {
+  font-size: 1.5em;
+}
+
 .active-item {
   background: #886b42;
   color: #ffffff !important;

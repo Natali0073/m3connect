@@ -11,8 +11,7 @@
     <div class="main-bar pa-12">
       <RestaurantsInfo
         v-if="pageInfo"
-        :data="pageInfo"
-        :menu-list="pageMenu"/>
+        :data="pageInfo"/>
       <div v-else>No data</div>
     </div>
   </div>
@@ -38,7 +37,6 @@ export default {
       pageTitle: 'Gourmet',
       menuIndex: '1',
       pageInfo: {},
-      pageMenu: {},
       menuList: [
         { title: 'Breakfast', value: 1 },
         { title: 'Lunch', value: 2 },
@@ -64,20 +62,6 @@ export default {
     getInfo(value) {
       const info = this.restaurantInfo.filter(el => el.id === +value);
       this.pageInfo = info[0];
-      this.getMenuFromFirestore();
-    },
-    getMenuFromFirestore() {
-      const collectionDocument = MENU_LIST_COLLECTIONS.find(
-        el => el.id === +this.menuIndex
-      );
-      this.pageMenu = {};
-      firebase.db
-        .collection('menu-list')
-        .doc(collectionDocument.name)
-        .get()
-        .then(querySnapshot => {
-          this.pageMenu = querySnapshot.data();
-        });
     },
   },
 };

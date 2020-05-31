@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-center flex-wrap attractions-content">
+  <div class="d-flex align-start justify-center flex-wrap mt-5">
     <div 
       v-for="item in pageInfo"
       :key="item.title" 
@@ -12,21 +12,20 @@
         height="100%"
       >
       <div class="content-info">
-        <div 
-          class="text-center source-font">{{ item.title.toUpperCase() }}</div>
+        <div class="text-center source-font">{{ item.title.toUpperCase() }}</div>
         <div 
           v-for="(data) in item.content"
           :key="data"
-          class="source-font">
+          class="source-font text-18">
           <span>&#10003; {{ data }}</span>
         </div>
-        <div class="booking d-flex align-center flex-column">
+        <div class="booking d-flex align-center flex-column text-20">
           <div class="price">{{ item.price }} &#8364;</div>
           <div class="avaliability">Book on: {{ item.bookingDate }}</div>
           <v-btn 
             :disabled="item.disabled"
             color="green" 
-            class="mt-3 mb-3"
+            class="mt-3 mb-3 text-20"
             @click="bookTour(item)">{{ item.disabled ? 'Booked' : 'Book now' }}</v-btn>
         </div>
       </div>
@@ -77,22 +76,31 @@ export default {
           console.error('Error adding document: ', error);
         });
     },
+    scrollEvent() {
+      var element = document.getElementById('scroll-box');
+
+      element.scrollIntoView();
+    },
   },
 };
 </script>
 
 <style scoped>
 .item-container {
-  width: 44%;
-  margin: 15px 30px;
-}
-
-.attractions-content {
-  margin: 0 10%;
+  width: 28%;
+  margin: 0 30px;
 }
 
 .source-font {
   font-family: Source Sans Pro, sans-serif;
+}
+
+.text-18 {
+  font-size: 18px;
+}
+
+.text-20 {
+  font-size: 20px;
 }
 
 .price {

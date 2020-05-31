@@ -7,27 +7,35 @@
       <v-toolbar
         flat
         color="transparent"
-        class="main-toolbar">
+        class="main-toolbar mt-6">
         <Logo/>
         <v-spacer/>
         <v-toolbar-items>
           <div 
             v-if="bookings.length"
-            class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light"
+            class="d-flex flex-column align-center mr-5 text-color-light top-icon"
             @mouseover="openBanner">
-            <v-icon color="white">mdi-bell</v-icon>
+            <v-icon 
+              color="white" 
+              large>mdi-bell</v-icon>
             <span class="notification-counter">{{ bookings.length + 1 }}</span>
           </div>
-          <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
-            <v-icon color="white">mdi-weather-sunny</v-icon>
+          <div class="d-flex flex-column justify-center align-center mr-5 text-color-light top-icon">
+            <v-icon 
+              color="white" 
+              large>mdi-weather-sunny</v-icon>
             <span>{{ weather.current.temperature }} &#8451;</span>
           </div>
-          <div class="d-flex flex-column font-07 justify-center align-center mr-5 text-color-light">
-            <v-icon color="white">mdi-calendar</v-icon>
+          <div class="d-flex flex-column justify-center align-center mr-5 text-color-light top-icon">
+            <v-icon 
+              color="white" 
+              large>mdi-calendar</v-icon>
             <span>{{ day }}</span>
           </div>
-          <div class="d-flex flex-column font-07 justify-center align-center text-color-light">
-            <v-icon color="white">mdi-clock-outline</v-icon>
+          <div class="d-flex flex-column justify-center align-center text-color-light top-icon">
+            <v-icon 
+              color="white" 
+              large>mdi-clock-outline</v-icon>
             <span>{{ time }}</span>
           </div>
         </v-toolbar-items>
@@ -44,7 +52,7 @@
             v-for="item in bookings"
             :key="item.id"
             class="my-2">
-            You booked <span class="text-bold">{{ item.title }}</span> at <span class="text-bold">{{ item.bookingDate }}</span>
+            <span class="text-bold">{{ item.title }}</span> at <span class="text-bold">{{ item.bookingDate }}</span>
           </div>
           <template v-slot:actions="{ dismiss }">
             <v-icon 
@@ -70,7 +78,7 @@
                 class="nav-link">
                 <div class="d-flex flex-column justify-center align-center mr-5">
                   <v-icon large>{{ item.icon }}</v-icon>
-                  <span>{{ item.title }}</span>
+                  <span class="font-15">{{ item.title }}</span>
                 </div>
               </nuxt-link>
             </v-btn>
@@ -186,7 +194,7 @@ export default {
 
       this.timer = setTimeout(() => {
         this.showBanner = false;
-      }, 5000);
+      }, 50000);
     },
     closeBanner() {
       this.showBanner = false;
@@ -209,11 +217,7 @@ export default {
 }
 
 .greetings-title {
-  font-size: 2em;
-}
-
-.font-07 {
-  font-size: 0.7em;
+  font-size: 3em;
 }
 
 .text-bold {
@@ -253,6 +257,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   margin-right: 20px;
+  font-size: 20px;
 }
 
 .banner-container .v-banner__actions {
@@ -261,16 +266,24 @@ export default {
 }
 
 .notification-counter {
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
-  font-size: 12px;
-  line-height: 1;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 0.8;
   padding: 4px 6px;
   position: absolute;
-  top: 10px;
+  top: -10px;
   margin-left: -10px;
   background-color: #f44336;
   border-color: #f44336;
+  font-size: 20px;
+}
+
+.top-icon {
+  font-size: 24px;
+}
+
+.font-15 {
+  font-size: 1.5em;
 }
 </style>

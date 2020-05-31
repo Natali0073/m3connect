@@ -75,9 +75,10 @@ export default {
   width: 70%;
   margin-top: -100px;
   margin-left: 35%;
-  padding: 20px;
+  padding: 10px 20px;
   height: 160px;
   box-shadow: -8px -7px 38px -12px rgba(0, 0, 0, 1);
   border-radius: 5px;
+  font-size: 18px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="hotel-title font-07 text-color-light">
+  <div class="hotel-title text-color-light d-flex flex-column justify-center">
     <div class="hotel-name">
       ADRIANA
     </div>
@@ -15,7 +15,7 @@
 }
 
 .hotel-title {
-  width: 182px;
+  width: 250px;
   text-align: center;
   background: rgba(0, 0, 0, 0.4);
   padding: 5px 20px;
@@ -23,9 +23,5 @@
 
 .hotel-name {
   font-size: 3em;
-}
-
-.font-07 {
-  font-size: 0.7em;
 }
 </style>

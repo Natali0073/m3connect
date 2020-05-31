@@ -2,7 +2,6 @@ const firebase = require('../firebaseConfig.js');
 
 export const state = () => ({
   homeInfo: null,
-  restaurantMenu: [],
   cmsRestaurantData: [],
   cmsSpaData: [],
   cmsAttractionsData: [],
@@ -14,9 +13,6 @@ export const state = () => ({
 export const mutations = {
   setHomeInfo(state, homeInfo) {
     state.homeInfo = homeInfo;
-  },
-  setRestaurantMenu(state, restaurantMenu) {
-    state.restaurantMenu = restaurantMenu;
   },
   setCmsRestaurantData(state, list) {
     state.cmsRestaurantData = list;
@@ -86,7 +82,6 @@ export const actions = {
 
 export const getters = {
   homeInfo: s => s.homeInfo,
-  restaurantMenu: s => s.restaurantMenu,
   weather: s => s.weather,
   bookings: s => s.bookings,
 };
