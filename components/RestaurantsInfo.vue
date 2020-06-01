@@ -15,7 +15,7 @@
         <div 
           class="text-18" 
           v-html="$md.render(data.additionalInfo)" />
-        <v-divider class="mt-5" />
+        <v-divider class="mt-5 gold-divider" />
       </div>
     </div>
     <h2 class="courgette-font my-10 font-weight-light">Reserve a table</h2>
@@ -31,7 +31,7 @@
         <div class="courgette-font font-weight-light my-1 system-gold-text text-18">or</div>
         <v-divider
           vertical
-          class="ml-2" />
+          class="ml-2 gold-divider" />
       </div>
       <div class="d-flex flex-column align-center px-5">
         <span class="mb-2 text-center text-18">Call our reception to reserve a table</span>
@@ -41,7 +41,7 @@
         <div class="courgette-font font-weight-light my-1 system-gold-text text-18">or</div>
         <v-divider
           vertical
-          class="ml-2" />
+          class="ml-2 gold-divider" />
       </div>
       <div class="d-flex flex-column align-center px-5">
         <span class="mb-2 text-center text-18">Visit our website to make a booking</span>
@@ -90,8 +90,8 @@ export default {
   font-weight: bold;
 }
 
-.theme--light.v-divider {
-  border-color: #846b42;
+.gold-divider {
+  border-color: #846b42 !important;
 }
 
 .menu-checkbox .v-input--selection-controls {

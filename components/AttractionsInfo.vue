@@ -25,7 +25,7 @@
           <v-btn 
             :disabled="item.disabled"
             color="green" 
-            class="mt-3 mb-3 text-20"
+            class="mt-3 mb-3 text-20 color-white"
             @click="bookTour(item)">{{ item.disabled ? 'Booked' : 'Book now' }}</v-btn>
         </div>
       </div>
@@ -140,7 +140,7 @@ export default {
   border-radius: 5px;
 }
 
-.v-btn {
-  color: #ffffff;
+.color-white {
+  color: #ffffff !important;
 }
 </style>
