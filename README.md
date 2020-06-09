@@ -33,4 +33,15 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## Run on your TV:
+webOs app is lokated here: https://github.com/Natali0073/webOS-hostedApp
+You need to install it locally and run on your TV in Developer mode.
+
+## Quick instructions:
+1. Install webOS TV CLI (http://webostv.developer.lge.com/sdk/installation/)
+2. Run CLI
+3. Connect your PC with TV (http://webostv.developer.lge.com/develop/app-test/)
+4. git clone https://github.com/Natali0073/webOS-hostedApp.git
+5. cd webOS-hostedApp
+6. ares-install --device YourDeviceName com.domain.app_0.0.1_all.ipk
+7. ares-launch --device emulator com.domain.app
