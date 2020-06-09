@@ -35,6 +35,7 @@ $ npm run generate
 
 ## Run on your TV:
 webOs app is lokated here: https://github.com/Natali0073/webOS-hostedApp
+
 You need to install it locally and run on your TV in Developer mode.
 
 ## Quick instructions:
