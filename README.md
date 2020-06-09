@@ -45,4 +45,4 @@ You need to install it locally and run on your TV in Developer mode.
 4. git clone https://github.com/Natali0073/webOS-hostedApp.git
 5. cd webOS-hostedApp
 6. ares-install --device YourDeviceName com.domain.app_0.0.1_all.ipk
-7. ares-launch --device emulator com.domain.app
+7. ares-launch --device YourDeviceName com.domain.app
